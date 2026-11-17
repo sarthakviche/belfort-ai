@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belfort AI</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="yfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#facc15" stop-opacity=".42"/><stop offset="1" stop-color="#facc15" stop-opacity="0"/></linearGradient>
+</defs></svg>
+
+<div class="app">
+  <aside class="side" id="side">
+    <a class="brand" href="#" id="home-link" aria-label="Belfort AI home">
+      <img class="logo" src="img/logo.png" alt="" width="40" height="40">
+      <span class="wordmark">Belfort <i>AI</i></span>
+    </a>
+
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Find a company…" autocomplete="off" aria-label="Search a company name or NSE symbol">
+      <kbd>/</kbd>
+      <div id="suggest" class="suggest" hidden></div>
+    </div>
+
+    <nav class="index" aria-label="Main">
+      <button type="button" class="ix on" id="nav-home"><span class="no">01</span><span class="tx">Today's lists</span></button>
+      <button type="button" class="ix" id="dict-btn"><span class="no">02</span><span class="tx">Dictionary</span></button>
+      <button type="button" class="ix" id="nav-ask"><span class="no">03</span><span class="tx">Ask Belfort</span></button>
+    </nav>
+
+    <div class="drawer-label"><span>Open files</span><button type="button" id="files-clear" class="linkish" hidden>Clear</button></div>
+    <div class="files" id="files"></div>
+
+    <div class="side-foot">End-of-day data. Not live prices.</div>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <button type="button" class="menu" id="menu" aria-label="Toggle sidebar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h16"/></svg></button>
+      <div class="crumb" id="crumb"></div>
+      <div class="sp"></div>
+      <span class="pill"><span class="dot"></span>End-of-day data</span>
+    </header>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <main>
+      <section id="home">
+        <div class="intro">
+          <h1>Research a stock before you <em>risk money</em> on it.</h1>
+          <p>Search any NSE company, or start from a list. Each stock gets one label, its main risk, the price that proves the idea wrong, and how many shares fit your risk limit. You make the decision.</p>
+        </div>
+        <div class="cards" id="list-tabs"></div>
+        <div class="panel glass">
+          <p class="criteria" id="list-criteria"></p>
+          <div class="scroll" id="list-body"></div>
+          <p class="src" id="list-src"></p>
+        </div>
+      </section>
+
+      <section id="report" hidden>
+        <div class="quote panel" id="quote"></div>
+        <div class="layout">
+          <div class="col-main">
+            <div class="panel chart-panel">
+              <div class="chart-head">
+                <div class="seg" id="style-seg" role="group" aria-label="Trading style">
+                  <button type="button" data-style="swing">Swing <small>2 to 15 days</small></button>
+                  <button type="button" data-style="positional">Positional <small>weeks to months</small></button>
+                </div>
+                <div class="legend" id="legend"></div>
+              </div>
+              <div id="chart" class="chart"></div>
+            </div>
+            <div class="panel glass" id="agree"></div>
+          </div>
+          <aside class="col-side">
+            <div class="panel glass glow" id="verdict"></div>
+            <div class="panel glass" id="calc">
+              <h3>Position size</h3>
+              <p class="hint">These two numbers decide how many shares you can hold without losing more than you chose if the stop is hit. They do not change the label.</p>
+              <div class="fields">
+                <label>Your capital (₹)<input id="capital" type="number" min="1" step="any" value="100000"></label>
+                <label>Risk per trade (%)<input id="risk" type="number" min="0.05" max="100" step="0.05" value="1"></label>
+                <label class="wide">Your own stop (₹, optional)<input id="stop" type="number" min="0" step="0.05" placeholder="uses the suggested stop"></label>
+              </div>
+              <div id="calc-out"></div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="dossier" id="dossier">
+          <div class="dhead"><div><div class="eyebrow">The dossier</div><h2>Everything behind the label</h2><p>Six sections. Open one to see the numbers and where they came from.</p></div></div>
+          <div class="folders" id="folders"></div>
+          <div class="dview" id="dview" hidden>
+            <button type="button" class="back" id="dback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>All sections</button>
+            <div class="dtabs" id="tabs"></div>
+            <div class="panel glass"><div id="pane"></div></div>
+          </div>
+        </div>
+      </section>
+      <p class="disclaimer" id="disclaimer"></p>
+    </main>
+  </div>
+</div>
+
+<button id="chat-fab" class="fab" type="button">Ask a question</button>
+<div id="chat" class="chat" hidden>
+  <div class="chat-head"><b>Ask about this stock or any term</b><button type="button" class="x" id="chat-x" aria-label="Close chat">×</button></div>
+  <div id="chat-log" class="chat-log"></div>
+  <form id="chat-form"><input id="chat-in" placeholder="e.g. Why is the label Watch?" maxlength="600" autocomplete="off"><button type="submit">Send</button></form>
+  <div class="chat-note">Answers come from Google Gemini. It explains; it does not give buy or sell advice. Your question and a summary of this report are sent to Google.</div>
+</div>
+
+<div id="dict" class="drawer" hidden>
+  <div class="drawer-head"><b>Dictionary</b><button type="button" class="x" id="dict-x" aria-label="Close dictionary">×</button></div>
+  <input id="dict-q" type="search" placeholder="Filter terms…" aria-label="Filter dictionary terms">
+  <div id="dict-list" class="dict-list"></div>
+</div>
+<div id="tip" class="tip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

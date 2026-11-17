@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belfort AI: a research desk for Indian stocks</title>
+<meta name="description" content="Belfort AI turns NSE data into one sourced label, one main risk and one invalidation price per stock. Open source. Product coming soon.">
+<meta property="og:title" content="Belfort AI">
+<meta property="og:description" content="A research desk for Indian stocks. One label, one risk, one invalidation price.">
+<meta property="og:image" content="https://sarthakviche.github.io/belfort-ai/assets/report.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08080a;--s1:#0e0e10;--s2:#141416;--s3:#1b1b1e;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);
+  --ink:#f4f4f2;--ink2:#c9c9c6;--mute:#8b8b90;--dim:#5f5f65;--y:#facc15;--y-hi:#ffe27a;--y-a08:rgba(250,204,21,.08);--y-a14:rgba(250,204,21,.14);--y-a30:rgba(250,204,21,.3);
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,serif;--font:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1000px 520px at 75% -6%,rgba(250,204,21,.11),transparent 62%),radial-gradient(700px 500px at 0% 100%,rgba(255,255,255,.04),transparent 60%)}
+a{color:inherit;text-decoration:none}
+.wrap{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:0 28px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:40px;height:40px;border-radius:12px;box-shadow:0 8px 26px rgba(250,204,21,.18)}
+.wm{font-family:var(--serif);font-size:30px;line-height:1}.wm i{color:var(--y);font-style:italic}
+.links{display:flex;align-items:center;gap:26px;color:var(--mute);font-size:14.5px}.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:99px;font-weight:600;font-size:14.5px;transition:.2s}
+.btn.primary{background:var(--y);color:#1a1400;box-shadow:0 10px 30px var(--y-a30)}.btn.primary:hover{transform:translateY(-2px);background:var(--y-hi)}
+.btn.ghost{border:1px solid var(--line2);color:var(--ink);background:rgba(255,255,255,.04)}.btn.ghost:hover{border-color:var(--y-a30)}
+
+.hero{padding:70px 0 40px;text-align:center}
+.soon{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:99px;border:1px solid var(--y-a30);background:var(--y-a08);color:var(--y);font-size:13px;font-weight:600;letter-spacing:.02em}
+.soon b{width:7px;height:7px;border-radius:50%;background:var(--y);box-shadow:0 0 10px var(--y)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7.4vw,88px);line-height:1;letter-spacing:-.015em;margin:26px auto 22px;max-width:980px}
+h1 em{color:var(--y)}
+.lead{color:var(--mute);font-size:19px;max-width:660px;margin:0 auto 34px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.shot{position:relative;margin:56px auto 0;max-width:1080px;border-radius:22px;padding:10px;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid var(--line2);box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 120px -30px rgba(250,204,21,.25)}
+.shot img{display:block;width:100%;border-radius:14px}
+
+section{padding:96px 0 0}
+.eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--y)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5vw,56px);line-height:1.05;margin:12px 0 14px;letter-spacing:-.01em}
+.sub{color:var(--mute);max-width:640px;font-size:17px;margin:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.card{position:relative;overflow:hidden;padding:28px;border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.018));border:1px solid var(--line);transition:.25s}
+.card:hover{border-color:var(--y-a30);transform:translateY(-3px)}
+.card::after{content:"";position:absolute;right:-60px;top:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(closest-side,var(--y-a14),transparent)}
+.num{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--y)}
+.card h3{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;margin:14px 0 10px}
+.card p{margin:0;color:var(--mute);font-size:15px}
+
+.split{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
+.list{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-direction:column;gap:16px}
+.list li{display:flex;gap:14px;color:var(--ink2)}.list li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;margin-top:9px;background:var(--y);box-shadow:0 0 10px var(--y-a30)}
+.list b{color:var(--ink);font-weight:600}
+.frame{border-radius:22px;padding:8px;background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.025));border:1px solid var(--line2)}
+.frame img{display:block;width:100%;border-radius:15px}
+
+.road{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{padding:26px;border-radius:24px;border:1px solid var(--line);background:var(--s1)}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:99px}
+.tag.live{background:var(--y);color:#1a1400}.tag.next{background:var(--y-a14);color:var(--y);box-shadow:inset 0 0 0 1px var(--y-a30)}.tag.soonT{background:rgba(255,255,255,.07);color:var(--ink2);box-shadow:inset 0 0 0 1px var(--line2)}
+.step h3{font-family:var(--serif);font-weight:400;font-size:28px;margin:16px 0 8px}.step p{margin:0;color:var(--mute);font-size:15px}
+
+.final{margin-top:96px;text-align:center;padding:64px 28px;border-radius:32px;border:1px solid var(--y-a30);background:radial-gradient(600px 240px at 50% 0%,var(--y-a14),transparent 70%),var(--s1)}
+.final h2{margin-top:0}.final .sub{margin:0 auto 28px}
+footer{position:relative;z-index:1;margin-top:80px;padding:34px 0 50px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+footer p{max-width:680px;margin:0}footer .brand .wm{font-size:24px}footer .brand img{width:30px;height:30px;border-radius:9px}
+@media(max-width:900px){.grid3,.road{grid-template-columns:1fr}.split{grid-template-columns:1fr}.links a.hide{display:none}.hero{padding-top:44px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#"><img src="assets/logo.png" alt=""><span class="wm">Belfort <i>AI</i></span></a>
+    <div class="links"><a class="hide" href="#what">What we do</a><a class="hide" href="#dossier">The dossier</a><a class="hide" href="#roadmap">Roadmap</a><a class="btn ghost" href="https://github.com/sarthakviche/belfort-ai">GitHub</a></div>
+  </nav>
+
+  <header class="hero">
+    <span class="soon"><b></b>Product coming soon</span>
+    <h1>Research a stock before you <em>risk money</em> on it.</h1>
+    <p class="lead">Belfort AI turns NSE data into one sourced label, the main risk, and the price that proves the idea wrong. A fixed rule, shown in full. You make the decision.</p>
+    <div class="cta"><a class="btn primary" href="https://github.com/sarthakviche/belfort-ai">View the source</a><a class="btn ghost" href="#roadmap">See the roadmap</a></div>
+    <div class="shot"><img src="assets/report.png" alt="Belfort AI stock report with chart, verdict and position size"></div>
+  </header>
+
+  <section id="what">
+    <div class="eyebrow">What we do</div>
+    <h2>Clarity before capital.</h2>
+    <p class="sub">Most tools hand you indicators and leave the conclusion to you. Belfort AI reduces each stock to a decision frame you can inspect, question and test.</p>
+    <div class="grid3">
+      <div class="card"><div class="num">01</div><h3>One label, one rule</h3><p>Setup valid, Watch, or Avoid, produced by deterministic code. The same numbers always give the same label, and every unmet condition is listed.</p></div>
+      <div class="card"><div class="num">02</div><h3>Risk before reward</h3><p>The main risk in plain language, the invalidation price, and a position size rounded down so a stopped-out loss never exceeds the limit you chose.</p></div>
+      <div class="card"><div class="num">03</div><h3>Every figure sourced</h3><p>Each number carries its source and date. Anything that could not be fetched is shown as missing, with the reason, rather than guessed.</p></div>
+    </div>
+  </section>
+
+  <section id="dossier">
+    <div class="split">
+      <div>
+        <div class="eyebrow">The dossier</div>
+        <h2>Everything behind the label.</h2>
+        <p class="sub">Six sections open from every report, so the verdict is never a black box.</p>
+        <ul class="list">
+          <li><div><b>Why this label.</b> The rule, one condition at a time.</div></li>
+          <li><div><b>Levels and patterns.</b> Support, resistance, Fibonacci, detected shapes.</div></li>
+          <li><div><b>Business.</b> Returns, debt, growth and sector peers.</div></li>
+          <li><div><b>What would make me wrong.</b> Concerns ranked by severity.</div></li>
+          <li><div><b>Pattern reliability.</b> How often each pattern actually worked.</div></li>
+          <li><div><b>Sources.</b> Where every number came from, and when.</div></li>
+        </ul>
+      </div>
+      <div class="frame"><img src="assets/dossier.png" alt="The six dossier sections"></div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="eyebrow">Roadmap</div>
+    <h2>Where Belfort AI is headed.</h2>
+    <p class="sub">The research desk is built and open source today. The packaged product is next.</p>
+    <div class="road">
+      <div class="step"><span class="tag live">Available</span><h3>Research desk</h3><p>Rule-based labels, technical and business analysis, position sizing, and a full dossier. Open source; runs on your own computer.</p></div>
+      <div class="step"><span class="tag next">In development</span><h3>Paper trading</h3><p>Practise with virtual points, record a prediction, and review how it played out over time. Kept fully separate from research.</p></div>
+      <div class="step"><span class="tag soonT">Coming soon</span><h3>The packaged app</h3><p>A one-click Windows installer, so there is nothing to set up. The product launches here.</p></div>
+    </div>
+  </section>
+
+  <div class="final">
+    <h2>Be there at launch.</h2>
+    <p class="sub">Follow the repository to see the product take shape, and be first to know when the packaged app is released.</p>
+    <a class="btn primary" href="https://github.com/sarthakviche/belfort-ai">Follow on GitHub</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap"><div class="row">
+    <div class="brand"><img src="assets/logo.png" alt=""><span class="wm">Belfort <i>AI</i></span></div>
+    <p>Belfort AI is an educational research project. It is not investment advice or a recommendation to buy or sell any security, and its author is not a SEBI-registered research analyst or investment adviser. Labels describe the state of a setup under fixed rules; they do not predict returns. You can lose money. Prices are end-of-day, not live.</p>
+  </div></div>
+</footer>
+</body>
+</html>

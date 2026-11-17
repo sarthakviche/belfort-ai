@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+data/cache/
+data/webview/
+data/belfort.log
+.pytest_cache/
+.env
+.claude/
+design-preview/
+implementation plan.md

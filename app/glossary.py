@@ -1,0 +1,70 @@
+"""Dictionary of every term the app uses, in plain language.
+
+`match` lists the phrases that trigger the hover explanation in the page (case-insensitive).
+"""
+
+G = [
+    # --- trading basics ---
+    ("Swing trade", "Basics", "A trade held for a few days to about three weeks, aiming to catch one move up between two price levels.", ["swing trade", "swing view"]),
+    ("Positional trade", "Basics", "A trade held for weeks to months, following a larger trend rather than a single short move.", ["positional trade", "positional view"]),
+    ("Capital", "Basics", "The total money you have set aside for trading. Position size is worked out from this.", ["your capital", "capital"]),
+    ("Risk per trade", "Basics", "The share of your capital you accept losing if one trade fails. Many traders keep it at 1% or less, so that ten losses in a row cost about 10%.", ["risk per trade", "risk limit"]),
+    ("Entry", "Basics", "The price at which you buy.", ["entry price", "entry"]),
+    ("Stop-loss", "Basics", "A price below your entry at which you sell to cap the loss. It is decided before buying and should not be moved lower afterwards.", ["stop-loss", "stop loss", "the stop", "stop at", "stop"]),
+    ("Stop distance", "Basics", "The gap between entry and stop-loss. A wider gap means fewer shares for the same risk.", ["stop distance"]),
+    ("Position size", "Basics", "How many shares to buy. It equals the money you are willing to lose divided by the stop distance, rounded down.", ["position size", "quantity"]),
+    ("Invalidation", "Basics", "The price or event that proves the idea wrong. When it happens, the reason for the trade is gone.", ["invalidates", "invalidation"]),
+    ("Reward to risk", "Basics", "How far price can travel to the next obstacle compared with how far the stop is. 2 means the possible gain is twice the possible loss.", ["reward to risk", "times the stop distance"]),
+    ("Gap", "Basics", "When a stock opens far from the previous close, usually on news. A gap down can jump past a stop-loss, so the loss is larger than planned.", ["gap past", "gap on", "gap"]),
+    # --- trend and levels ---
+    ("Trend", "Chart", "The general direction of price. Up when rally peaks and dips keep getting higher; down when they keep getting lower.", ["uptrend", "downtrend", "trend"]),
+    ("Swing high", "Chart", "A rally peak: a day whose high is above the highs of the days around it.", ["swing highs", "swing high", "rally peaks", "rally peak"]),
+    ("Swing low", "Chart", "A dip bottom: a day whose low is below the lows of the days around it.", ["swing lows", "swing low"]),
+    ("Higher highs and higher lows", "Chart", "Each rally peak is above the previous peak and each dip stops above the previous dip. This is what an uptrend looks like.", ["higher highs", "higher lows", "higher low"]),
+    ("Lower highs and lower lows", "Chart", "Each rally peak is below the previous peak and each dip goes below the previous dip. This is what a downtrend looks like.", ["lower highs", "lower lows"]),
+    ("Support", "Chart", "A price where buyers stepped in before and stopped a fall. Price often pauses there again, but it can break.", ["support"]),
+    ("Resistance", "Chart", "A price where sellers stepped in before and stopped a rise. Price often stalls there again.", ["resistance"]),
+    ("Breakout", "Chart", "A close above a resistance level or a recent high. It is more convincing when volume is well above normal.", ["breakout", "broke out", "broke above"]),
+    ("Pullback", "Chart", "A short fall inside an uptrend. Buying near support after a pullback allows a closer stop than buying after a fast run.", ["pulled back", "pullback"]),
+    ("Stretched", "Chart", "Price has run far above its average in a short time. Entries here need a wide stop and often see a pullback first.", ["stretched"]),
+    ("Consolidation", "Chart", "A period where price moves sideways in a narrow range. A breakout from it can start a new move, in either direction.", ["consolidating", "consolidation", "narrow range"]),
+    ("Moving average", "Chart", "The average closing price over the last N days (20, 50 or 200 here). Price above a rising average suggests an uptrend.", ["day average", "moving average", "averages"]),
+    ("ATR", "Chart", "Average True Range: the typical distance a stock moves in one day, in rupees. Used to set stops that fit the stock's normal swings.", ["ATR"]),
+    ("Volume", "Chart", "The number of shares traded in a day. Moves on high volume have more participation behind them.", ["average volume", "volume"]),
+    ("Delivery percentage", "Chart", "The share of the day's traded shares that buyers actually took into their accounts instead of selling the same day. Higher means more holding, less day-trading.", ["delivery percentage", "taken for delivery", "delivery"]),
+    ("Bulk deal", "Chart", "A single trade of more than 0.5% of a company's shares, reported by the exchange with the buyer's or seller's name.", ["bulk deals", "bulk deal"]),
+    ("RSI", "Chart", "Relative Strength Index, from 0 to 100. Above 70 means price has risen fast and may be stretched; below 30 means it has fallen fast.", ["RSI"]),
+    ("MACD", "Chart", "A momentum measure built from two moving averages. Above its signal line means recent momentum is rising.", ["MACD", "signal line"]),
+    ("Fibonacci retracement", "Chart", "Levels at set fractions (38.2%, 50%, 61.8%) of the last big move, where some traders expect a pullback to pause. Evidence for them is weak.", ["fibonacci", "retracement", "halfway point"]),
+    ("Trend line", "Chart", "A straight line drawn through several swing lows (or highs). A close through it is an early sign the trend is weakening.", ["trend line"]),
+    # --- patterns ---
+    ("Chart pattern", "Patterns", "A recurring shape in price. Patterns are popular but their track record is weak; this app shows how they actually performed.", ["chart patterns", "classic chart pattern", "pattern"]),
+    ("Double top", "Patterns", "Two peaks at about the same price with a dip between. Seen as a warning that buyers failed twice at that level.", ["double top"]),
+    ("Double bottom (W)", "Patterns", "Two lows at about the same price with a bounce between, shaped like a W. Seen as a sign sellers failed twice.", ["double bottom", "W formation"]),
+    ("Head and shoulders", "Patterns", "Three peaks with the middle one highest. A close below the line joining the dips (the neckline) is read as a top.", ["head and shoulders"]),
+    ("Neckline", "Patterns", "The line joining the dips (or bounces) inside a pattern. The pattern counts as confirmed only when price closes through it.", ["neckline"]),
+    ("Triangle", "Patterns", "Price swings get smaller between two converging lines. A close outside either line is the breakout.", ["triangle"]),
+    ("Cup and handle", "Patterns", "A rounded dip and recovery (the cup) followed by a small dip (the handle). A close above the rim is the breakout.", ["cup and handle"]),
+    ("Measured target", "Patterns", "A textbook projection: the height of the pattern added to the breakout point. It is not a forecast.", ["measured target", "measured move"]),
+    ("Baseline", "Patterns", "What happens with random entry days using the same target and stop. A pattern is only useful if it clearly beats this.", ["baseline"]),
+    # --- business ---
+    ("P/E", "Business", "Price divided by profit per share over the last 12 months. It shows how many rupees you pay for each rupee of yearly profit.", ["P/E"]),
+    ("Market value", "Business", "Share price multiplied by the number of shares: what the whole company is worth on the market (market capitalisation).", ["market value", "market cap"]),
+    ("Large cap, mid cap, small cap", "Business", "Company size by market value. Large caps are the biggest and usually steadier; mid and small caps can move much more, both ways.", ["large cap", "mid cap", "small cap"]),
+    ("Nifty 50", "Business", "The index of 50 of the largest companies on the NSE.", ["nifty 50", "nifty"]),
+    ("Return on equity", "Business", "Yearly profit as a percentage of shareholders' money in the business. Higher means the company earns more on each rupee it holds.", ["return on equity", "return on shareholder money"]),
+    ("Debt to equity", "Business", "Total borrowings divided by shareholders' money. Above about 1.5 the company depends heavily on lenders.", ["debt to equity"]),
+    ("Interest cover", "Business", "Operating profit divided by interest cost. Below about 1.5 the company barely earns enough to pay its lenders.", ["interest cover", "times interest cost"]),
+    ("Operating margin", "Business", "Operating profit as a percentage of sales: how much of each rupee of sales is left after running costs.", ["operating margin"]),
+    ("Net margin", "Business", "Final profit as a percentage of sales, after all costs, interest and tax.", ["net margin"]),
+    ("Receivables", "Business", "Money customers owe the company for goods already sold. If it grows much faster than sales, sales may not be turning into cash.", ["receivable days", "receivables"]),
+    ("Cash from operations", "Business", "Actual cash the business brought in during the year. Healthy companies turn most of their reported profit into cash.", ["cash from operations"]),
+    ("One-time gains", "Business", "Profit from something that will not repeat, such as selling an asset. It makes one year's profit look better than the business really is.", ["one-time gains", "unusual items", "one-time"]),
+    ("Dilution", "Business", "The company issues new shares, so each existing share owns a smaller part of the business.", ["dilution"]),
+    ("Promoter pledge", "Business", "The founders have given their shares to lenders as security for loans. If the price falls, lenders can sell those shares and push it down further.", ["promoter pledge", "pledge"]),
+    ("Peers", "Business", "Companies in the same industry, used for comparison.", ["peer median", "peers"]),
+    ("Undervalued", "Business", "Priced cheaply against profits compared with similar companies. A cheap price can also mean the market sees a problem.", ["undervalued", "below peers"]),
+    ("Results", "Business", "The quarterly announcement of sales and profit. Prices often jump or drop sharply on the day.", ["results date", "results"]),
+]
+
+GLOSSARY = [{"term": t, "group": g, "meaning": m, "match": mt} for t, g, m, mt in G]

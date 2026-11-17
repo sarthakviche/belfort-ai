@@ -1,0 +1,289 @@
+{
+ "available": true,
+ "generated": "2026-11-17",
+ "source": "Yahoo Finance daily prices, 47 large NSE stocks, 2021-11-16 to 2026-11-13",
+ "headline": "Classic chart patterns have weak and disputed predictive power on liquid stocks. This table shows what the detectors in this app actually did, so a pattern name is never taken as an edge by itself. Patterns are not used in the label.",
+ "synthetic_note": "computer-drawn textbook shapes with noise (200 per pattern) and 600 random charts with no intended pattern. This shows whether the code finds the shape and how often it sees one in noise. They are not human-labelled real charts.",
+ "historical_note": "every newly confirmed pattern over the period, tracked until price reached the measured target, hit the invalidation price, or the holding window ended. The baseline uses random entry days in the same stock with the same target and stop distances. A pattern only adds something if it beats the baseline by a clear margin on a large sample. Past results do not predict future ones; costs and slippage are not included; the stocks are today's large companies, which flatters results.",
+ "synthetic": {
+  "Double top": {
+   "labelled_examples": 200,
+   "hit_rate": 0.995,
+   "no_pattern_charts": 600,
+   "false_positive_rate": 0.085
+  },
+  "Double bottom (W)": {
+   "labelled_examples": 200,
+   "hit_rate": 1.0,
+   "no_pattern_charts": 600,
+   "false_positive_rate": 0.125
+  },
+  "Head and shoulders": {
+   "labelled_examples": 200,
+   "hit_rate": 1.0,
+   "no_pattern_charts": 600,
+   "false_positive_rate": 0.05
+  },
+  "Inverse head and shoulders": {
+   "labelled_examples": 200,
+   "hit_rate": 1.0,
+   "no_pattern_charts": 600,
+   "false_positive_rate": 0.055
+  },
+  "Ascending triangle": {
+   "labelled_examples": 200,
+   "hit_rate": 0.915,
+   "no_pattern_charts": 600,
+   "false_positive_rate": 0.012
+  },
+  "Descending triangle": {
+   "labelled_examples": 200,
+   "hit_rate": 0.86,
+   "no_pattern_charts": 600,
+   "false_positive_rate": 0.015
+  },
+  "Symmetrical triangle": {
+   "labelled_examples": 200,
+   "hit_rate": 0.82,
+   "no_pattern_charts": 600,
+   "false_positive_rate": 0.007
+  },
+  "Cup and handle": {
+   "labelled_examples": 200,
+   "hit_rate": 1.0,
+   "no_pattern_charts": 600,
+   "false_positive_rate": 0.09
+  }
+ },
+ "historical": {
+  "swing": {
+   "Ascending triangle": {
+    "signals": 34,
+    "reached_target_first": 0.324,
+    "hit_invalidation_first": 0.441,
+    "neither": 0.235,
+    "baseline_target_first": 0.298,
+    "avg_move_in_pattern_direction_pct": -0.72,
+    "median_reward_to_risk": 1.63,
+    "horizon_bars": 30,
+    "small_sample": false
+   },
+   "Cup and handle": {
+    "signals": 168,
+    "reached_target_first": 0.077,
+    "hit_invalidation_first": 0.458,
+    "neither": 0.464,
+    "baseline_target_first": 0.135,
+    "avg_move_in_pattern_direction_pct": -0.08,
+    "median_reward_to_risk": 2.45,
+    "horizon_bars": 30,
+    "small_sample": false
+   },
+   "Descending triangle": {
+    "signals": 39,
+    "reached_target_first": 0.179,
+    "hit_invalidation_first": 0.615,
+    "neither": 0.205,
+    "baseline_target_first": 0.215,
+    "avg_move_in_pattern_direction_pct": -1.47,
+    "median_reward_to_risk": 2.34,
+    "horizon_bars": 30,
+    "small_sample": false
+   },
+   "Double bottom (W)": {
+    "signals": 148,
+    "reached_target_first": 0.615,
+    "hit_invalidation_first": 0.216,
+    "neither": 0.169,
+    "baseline_target_first": 0.572,
+    "avg_move_in_pattern_direction_pct": 1.79,
+    "median_reward_to_risk": 0.63,
+    "horizon_bars": 30,
+    "small_sample": false
+   },
+   "Double top": {
+    "signals": 147,
+    "reached_target_first": 0.361,
+    "hit_invalidation_first": 0.367,
+    "neither": 0.272,
+    "baseline_target_first": 0.426,
+    "avg_move_in_pattern_direction_pct": -3.53,
+    "median_reward_to_risk": 0.65,
+    "horizon_bars": 30,
+    "small_sample": false
+   },
+   "Head and shoulders": {
+    "signals": 77,
+    "reached_target_first": 0.169,
+    "hit_invalidation_first": 0.429,
+    "neither": 0.403,
+    "baseline_target_first": 0.127,
+    "avg_move_in_pattern_direction_pct": -0.4,
+    "median_reward_to_risk": 1.79,
+    "horizon_bars": 30,
+    "small_sample": false
+   },
+   "Inverse head and shoulders": {
+    "signals": 56,
+    "reached_target_first": 0.321,
+    "hit_invalidation_first": 0.411,
+    "neither": 0.268,
+    "baseline_target_first": 0.315,
+    "avg_move_in_pattern_direction_pct": 2.74,
+    "median_reward_to_risk": 1.34,
+    "horizon_bars": 30,
+    "small_sample": false
+   },
+   "Symmetrical triangle": {
+    "signals": 42,
+    "reached_target_first": 0.19,
+    "hit_invalidation_first": 0.405,
+    "neither": 0.405,
+    "baseline_target_first": 0.143,
+    "avg_move_in_pattern_direction_pct": 0.94,
+    "median_reward_to_risk": 2.51,
+    "horizon_bars": 30,
+    "small_sample": false
+   }
+  },
+  "positional": {
+   "Ascending triangle": {
+    "signals": 11,
+    "reached_target_first": 0.0,
+    "hit_invalidation_first": 0.636,
+    "neither": 0.364,
+    "baseline_target_first": 0.33,
+    "avg_move_in_pattern_direction_pct": -2.39,
+    "median_reward_to_risk": 2.12,
+    "horizon_bars": 60,
+    "small_sample": true
+   },
+   "Cup and handle": {
+    "signals": 97,
+    "reached_target_first": 0.113,
+    "hit_invalidation_first": 0.454,
+    "neither": 0.433,
+    "baseline_target_first": 0.196,
+    "avg_move_in_pattern_direction_pct": 1.17,
+    "median_reward_to_risk": 2.39,
+    "horizon_bars": 60,
+    "small_sample": false
+   },
+   "Descending triangle": {
+    "signals": 5,
+    "reached_target_first": 0.4,
+    "hit_invalidation_first": 0.6,
+    "neither": 0.0,
+    "baseline_target_first": 0.25,
+    "avg_move_in_pattern_direction_pct": 1.26,
+    "median_reward_to_risk": 2.65,
+    "horizon_bars": 60,
+    "small_sample": true
+   },
+   "Double bottom (W)": {
+    "signals": 63,
+    "reached_target_first": 0.54,
+    "hit_invalidation_first": 0.27,
+    "neither": 0.19,
+    "baseline_target_first": 0.607,
+    "avg_move_in_pattern_direction_pct": 2.82,
+    "median_reward_to_risk": 0.74,
+    "horizon_bars": 60,
+    "small_sample": false
+   },
+   "Double top": {
+    "signals": 81,
+    "reached_target_first": 0.37,
+    "hit_invalidation_first": 0.407,
+    "neither": 0.222,
+    "baseline_target_first": 0.409,
+    "avg_move_in_pattern_direction_pct": -4.08,
+    "median_reward_to_risk": 0.7,
+    "horizon_bars": 60,
+    "small_sample": false
+   },
+   "Head and shoulders": {
+    "signals": 46,
+    "reached_target_first": 0.174,
+    "hit_invalidation_first": 0.652,
+    "neither": 0.174,
+    "baseline_target_first": 0.144,
+    "avg_move_in_pattern_direction_pct": -4.82,
+    "median_reward_to_risk": 2.06,
+    "horizon_bars": 60,
+    "small_sample": false
+   },
+   "Inverse head and shoulders": {
+    "signals": 33,
+    "reached_target_first": 0.152,
+    "hit_invalidation_first": 0.364,
+    "neither": 0.485,
+    "baseline_target_first": 0.417,
+    "avg_move_in_pattern_direction_pct": -0.56,
+    "median_reward_to_risk": 1.26,
+    "horizon_bars": 60,
+    "small_sample": false
+   },
+   "Symmetrical triangle": {
+    "signals": 15,
+    "reached_target_first": 0.067,
+    "hit_invalidation_first": 0.4,
+    "neither": 0.533,
+    "baseline_target_first": 0.108,
+    "avg_move_in_pattern_direction_pct": -1.15,
+    "median_reward_to_risk": 3.96,
+    "horizon_bars": 60,
+    "small_sample": true
+   }
+  }
+ },
+ "universe": [
+  "ADANIPORTS",
+  "ASIANPAINT",
+  "AXISBANK",
+  "BAJAJ-AUTO",
+  "BAJAJFINSV",
+  "BAJFINANCE",
+  "BHARTIARTL",
+  "BPCL",
+  "BRITANNIA",
+  "CIPLA",
+  "DIVISLAB",
+  "DRREDDY",
+  "EICHERMOT",
+  "GRASIM",
+  "HCLTECH",
+  "HDFCBANK",
+  "HEROMOTOCO",
+  "HINDALCO",
+  "HINDUNILVR",
+  "ICICIBANK",
+  "INDUSINDBK",
+  "INFY",
+  "IOC",
+  "ITC",
+  "JSWSTEEL",
+  "KOTAKBANK",
+  "LT",
+  "M&M",
+  "MARUTI",
+  "NESTLEIND",
+  "NTPC",
+  "ONGC",
+  "POWERGRID",
+  "RELIANCE",
+  "SBIN",
+  "SHRIRAMFIN",
+  "SUNPHARMA",
+  "TATACONSUM",
+  "TATAPOWER",
+  "TATASTEEL",
+  "TCS",
+  "TECHM",
+  "TITAN",
+  "TVSMOTOR",
+  "ULTRACEMCO",
+  "VEDL",
+  "WIPRO"
+ ]
+}
